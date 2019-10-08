@@ -153,7 +153,7 @@ defmodule EctoMaterializedPath do
     Ecto.Query.from(q in query, where: fragment("CARDINALITY(?) >= ?", field(q, ^column_name), ^ibtoet))
   end
 
-  defp do_where_depth(query, [is_equal_to: iet], column_name) when is_integer(iet) and iet > 0 do
+  defp do_where_depth(query, [is_equal_to: iet], column_name) when is_integer(iet) do
     Ecto.Query.from(q in query, where: fragment("CARDINALITY(?) = ?", field(q, ^column_name), ^iet))
   end
 
