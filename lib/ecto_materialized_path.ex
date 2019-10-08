@@ -81,8 +81,6 @@ defmodule EctoMaterializedPath do
   require Ecto.Query
 
   def parent(schema = %{__struct__: struct}, path) do
-    parent_id = parent_id(schema, path)
-
     case parent_id(schema, path) do
       nil -> Ecto.Query.from(q in struct, where: is_nil(q.id), limit: 1)
       parent_id -> Ecto.Query.from(q in struct, where: q.id == ^parent_id, limit: 1)
