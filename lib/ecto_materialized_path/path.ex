@@ -23,4 +23,8 @@ defmodule EctoMaterializedPath.Path do
   def load(value), do: {:ok, value}
 
   def type, do: EctoMaterializedPath.Path
+
+  def embed_as(_format), do: :self
+
+  def equal?(list_1, list_2), do: list_1 == list_2
 end
